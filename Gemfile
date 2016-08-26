@@ -21,6 +21,8 @@ gem 'angular-ui-router-rails'
 # Use angular templates
 gem 'angular-rails-templates'
 
+gem 'bower-rails'
+
 gem 'dotenv-rails'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
