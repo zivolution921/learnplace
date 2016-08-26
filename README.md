@@ -7,7 +7,7 @@ Learnplace is a eLearning platform, complete with a CMS that's going to allow sc
 ##Installation
 
 To get this running locally on your computer:
-- Clone this repo locally git clone https://github.com/zivolution921/leanplace
+- Clone this repo locally git clone https://github.com/zivolution921/learnplace
 - cd into the directory
 - Run `bundle`
 - Run `rake db:migrate`
