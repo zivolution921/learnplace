@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   resources :schools 
 
+  #Subscriptions
+  post   "/subscriptions" => "subscriptions#create"
+  put    "/subscriptions" => "subscriptions#update"
+  delete "/subscriptions" => "subscriptions#delete"
+
   #Progresses
   get "chapters/read" => "progresses#show"
   post "chapters/mark_as_complete" => "progresses#create"
