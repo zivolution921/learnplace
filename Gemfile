@@ -11,6 +11,10 @@ gem 'devise'
 # Tiddle provide Devise with a strategy for token authentication in API
 gem 'tiddle'   
 # Use SCSS for stylesheets
+
+gem 'stripe'
+
+gem 'dotenv-rails'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
