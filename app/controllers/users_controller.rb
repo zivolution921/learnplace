@@ -13,6 +13,11 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+
+  def subscribers
+    @users = User.where.not(subscribed: false).count
+    render json: @users
+  end
   
   def all_users
     @users = User.all.count
