@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826191443) do
+ActiveRecord::Schema.define(version: 20160826203816) do
 
   create_table "authentication_tokens", force: :cascade do |t|
     t.string   "body"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20160826191443) do
   end
 
   add_index "authentication_tokens", ["user_id"], name: "index_authentication_tokens_on_user_id"
+
+  create_table "chapters", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "video_url"
+    t.boolean  "completed",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
