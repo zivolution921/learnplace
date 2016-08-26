@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826203816) do
+ActiveRecord::Schema.define(version: 20160826205545) do
 
   create_table "authentication_tokens", force: :cascade do |t|
     t.string   "body"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20160826203816) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "progresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "progresses", ["chapter_id"], name: "index_progresses_on_chapter_id"
+  add_index "progresses", ["user_id"], name: "index_progresses_on_user_id"
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"
