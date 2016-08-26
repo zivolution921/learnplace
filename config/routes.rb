@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   match 'users/:id' => 'users#update_user', via: [:patch]
 
-
+  get '/send_password' => "users#reset_password"
 end
