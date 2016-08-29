@@ -1,10 +1,15 @@
 class SchoolsController < ApplicationController
-  before_action :set_school
+  before_action :set_school, :except => [:index]
 
   def update
     if @school.update(school_params)
       render json: @school
     end
+  end
+
+  def index
+    @schools = School.all
+    render json: @schools
   end
 
   def show

@@ -1,0 +1,22 @@
+Welcome Home
+<h1>WElcome</h1>
+<div>
+  {{message}}
+  {{data}}
+</div>
+<table>
+  <tr>
+    <th>School Name:</th>
+    <th>School thumbnail</th>
+    <th>School creation</th> 
+  </tr>
+  <tr ng-repeat="school in data">
+    <td>{{school.name}}<td>
+    <td>{{school.thumbnail}}</td>
+    <td>{{school.created_at}}</td>
+  </tr>
+</table>
+
+ 
+
+
