@@ -4,12 +4,15 @@ angular
     $scope.school = {
       name: ''
     };
+    $scope.errors = [];
 
     $scope.create = function() {
       $http.post('/api/v1/schools', {
         school: $scope.school
       }).then(function(result){
         $state.go('schools_index');
+      }, function(response){
+        $scope.errors = response.data.errors;
       });
     }
   })
