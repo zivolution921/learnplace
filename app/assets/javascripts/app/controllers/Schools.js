@@ -1,5 +1,18 @@
 angular
   .module("learnplace")
+  .controller("NewController", function($scope, $http, $state){
+    $scope.school = {
+      name: ''
+    };
+
+    $scope.create = function() {
+      $http.post('/api/v1/schools', {
+        school: $scope.school
+      }).then(function(result){
+        $state.go('schools_index');
+      });
+    }
+  })
   .controller("IndexController", function($scope, $http) {
     var DATA = [];
     
