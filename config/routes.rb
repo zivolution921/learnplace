@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :chapters
   end
 
-  resources :schools 
+  namespace :api do 
+    namespace :v1 do 
+      resources :schools 
+    end
+  end
 
   #Subscriptions
   post   "/subscriptions" => "subscriptions#create"
