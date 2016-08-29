@@ -3,11 +3,15 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
     console.log("hello world app.js")
     $stateProvider
-        .state('home', {
-            url: '/',
-            templateUrl: 'app/templates/home.html',
-            controller: 'HomeController'
-
+        .state('schools_index', {
+          url: '/',
+          templateUrl: 'app/templates/schools/index.html',
+          controller: 'IndexController'
+        })
+        .state('school_new', {
+          url: '/schools_new',
+          templateUrl: 'app/templates/schools/new.html',
+          controller: 'NewController'
         });
         $urlRouterProvider.otherwise('/');
       });
