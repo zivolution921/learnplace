@@ -5,10 +5,7 @@ angular
     console.log("hello");
     // Simple GET request example:
     $scope.data = [];
-    $http({
-      method: 'GET',
-      url: '/schools'
-    }).then(function successCallback(response) {
+    $http.get('/api/v1/schools').then(function successCallback(response) {
         // this callback will be called asynchronously
         // when the response is available
         $scope.data = response.data
