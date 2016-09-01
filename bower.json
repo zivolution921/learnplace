@@ -1,14 +1,18 @@
 {
-  “lib”: {
-    “name”: “bower-rails generated lib assets”,
-    “dependencies”: {
-      “angular”: “v1.5.3”,
-      “angular-ui-router”: “latest”,
-      “angular-resource”: “v1.5.3”
+  "name": "foo",
+  "lib": {
+    "name": "bower-rails generated lib assets",
+    "dependencies": {
+      "angular": "v1.5.3",
+      "angular-ui-router": "latest",
+      "angular-resource": "v1.5.3"
     }
   },
-  “vendor”: {
-    “name”: “bower-rails generated vendor assets”,
-    “dependencies”: {}
+  "vendor": {
+    "name": "bower-rails generated vendor assets",
+    "dependencies": {}
+  },
+  "dependencies": {
+    "AngularDevise": "angular-devise#^1.3.0"
   }
 }

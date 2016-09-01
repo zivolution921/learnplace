@@ -8,6 +8,10 @@ gem 'sqlite3'
 
 # Devise
 gem 'devise'  
+
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
 # Tiddle provide Devise with a strategy for token authentication in API
 gem 'tiddle'   
 # Use SCSS for stylesheets
