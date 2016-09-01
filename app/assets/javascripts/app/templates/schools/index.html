@@ -12,8 +12,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="school in schools">
-      <td>{{school.name}}</td>
+    <tr ng-repeat="school in schools | filter:nameText | orderBy: 'name'">
+      <td>{{school.name | uppercase}}</td>
       <td>{{school.thumbnail}}</td>
       <td>{{school.created_at | date}}</td>
     </tr>
