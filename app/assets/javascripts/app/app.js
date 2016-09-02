@@ -8,6 +8,11 @@ angular
           templateUrl: 'app/templates/schools/index.html',
           controller: 'IndexController'
         })
+        .state('courses', {
+          url: 'courses',
+          templateUrl: 'app/templates/courses/index.html',
+          controller: 'IndexController'
+        })
         .state('login', {
           url: '/login',
           templateUrl: 'app/templates/logins/new.html',
