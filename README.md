@@ -2,7 +2,7 @@
 
 ##Introduction
 
-Learnplace is a eLearning platform, that's going to allow school admins to create and manage video courses. Integrating with Stripe, which is going to help us manage the app's payments system.
+Learnplace is a eLearning platform, that's going to allow school admins to create and manage schools and courses. Integrating with Stripe, which is going to help us manage the app's payments system.
 
 ##Installation
 
