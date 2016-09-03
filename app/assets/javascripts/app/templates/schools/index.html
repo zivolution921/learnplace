@@ -1,4 +1,4 @@
-<h1>School list</h1>
+<h1>School list | {{ current_user }}</h1>
 <div class="pull-right">
   <input ng-keyup="doSearch()" ng-model="query" placeholder="Search..."/>
 </div>
@@ -6,19 +6,35 @@
 <table class="table">
   <thead>
     <tr>
+      <th>#</th>
       <th>Name</th>
-      <th>thumbnail</th>
       <th>creation</th> 
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="school in schools | filter:nameText | orderBy: 'name'">
-      <td>{{school.name | uppercase}}</td>
-      <td>{{school.thumbnail}}</td>
+      <td>{{ school.id }}</td>
+      <td>
+        <a ng-hide="school.edit" ng-href="#/schools/{{ school.id }}/courses">{{school.name | uppercase}}
+        </a>
+        <input ng-model="school.name" ng-show="school.edit"/>
+        |
+        <a ng-click="school.edit = true" ng-hide="school.edit">edit</a>
+        <a ng-click="update(school)" ng-show="school.edit">update</a>
+      </td>
       <td>{{school.created_at | date}}</td>
     </tr>
   </tbody>
 </table>
+
+<div>
+  <label>What is your facebook handle?</label>
+  <input type="text" ng-model="handle">
+</div>
+
+<hr />
+
+<h1>facebook.com/{{ lowercasehandle() }}</h1>
 
  
 
