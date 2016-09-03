@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :courses do 
-    resources :chapters
-  end
+  # resources :courses do 
+  #   resources :chapters
+  # end
 
   namespace :api do 
     namespace :v1 do 
-      resources :schools 
-      resources :courses
+      resources :schools do
+        resources :courses
+      end
     end
   end
 
