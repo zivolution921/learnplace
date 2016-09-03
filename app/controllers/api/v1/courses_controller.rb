@@ -18,6 +18,9 @@ class Api::V1::CoursesController < ApplicationController
     @course = @school.courses.new(course_params)
     if @course.save
       render json: @course
+    else
+      errors = @course.errors.full_messages
+      render json: {errors: errors}, status: 400
     end
   end
 
