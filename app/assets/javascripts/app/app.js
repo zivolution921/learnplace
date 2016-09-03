@@ -1,5 +1,5 @@
 angular
-  .module("learnplace", ['ui.router', 'templates', 'Devise'])
+  .module("learnplace", ['ui.router','templates', 'Devise'])
   .config(function ($stateProvider, $urlRouterProvider) {
     console.log("hello world app.js")
     $stateProvider
@@ -8,10 +8,10 @@ angular
           templateUrl: 'app/templates/schools/index.html',
           controller: 'IndexController'
         })
-        .state('courses', {
-          url: 'courses',
+        .state('schools_courses', {
+          url: '/schools/:id/courses',
           templateUrl: 'app/templates/courses/index.html',
-          controller: 'IndexController'
+          controller: 'CoursesController'
         })
         .state('login', {
           url: '/login',
