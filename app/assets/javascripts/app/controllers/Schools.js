@@ -1,25 +1,38 @@
 angular
   .module("learnplace")
-  .controller("NewController", function($scope, $http, $state){
+  .controller("NewController", ['$scope', '$filter', '$state', 'SchoolService', function($scope, $filter, $state, SchoolService){
     $scope.school = {
       name: ''
     };
     $scope.errors = [];
-
+ 
     $scope.create = function() {
-      $http.post('/api/v1/schools', {
-        school: $scope.school
-      }).then(function(result){
+      SchoolService.create($scope.school).then(function(result){
         $state.go('schools_index');
       }, function(response){
         $scope.errors = response.data.errors;
       });
     }
-  })
-  .controller("IndexController", function($scope, $http) {
+  }])
+  .controller("IndexController", function(SchoolService, Auth, $scope, $filter) {
     var DATA = [];
+  
+    Auth.currentUser().then(function(response){
+      $scope.current_user = response.email;
+    });
+
+    $scope.handle = '';
+
+    $scope.lowercasehandle = function() {
+      return $filter('lowercase')($scope.handle);
+    };
     
     $scope.query = '';
+
+    $scope.update = function(school){
+      school.edit = false;
+      SchoolService.update(school);
+    };
 
     $scope.doSearch = function(){
       $scope.schools = DATA.filter(function(item){
@@ -27,10 +40,10 @@ angular
       });
     };
 
-    $http.get('/api/v1/schools').then(function successCallback(response) {
+    SchoolService.list().then(function(response) {
         DATA = response.data;
         $scope.schools = DATA;
-      }, function errorCallback(response) {
+      }, function(response) {
         console.log(response);
       });
   });
