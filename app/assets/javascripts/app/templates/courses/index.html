@@ -1,0 +1,14 @@
+<a ng-href="#/">Back to schools</a> | Welcome to {{ school_name }} courses:
+<ul>
+  <li ng-repeat="course in courses">{{ course.name }}</li>  
+</ul>
+
+<form ng-submit="create()">
+  <ol>
+    <li ng-repeat="error in errors">{{ error }}</li>
+  </ol>
+  <input ng-model="course.name" placeholder="name"/><br/>
+  <textarea ng-model="course.description" placeholder="description"></textarea><br/>
+  <button type="submit">Create</button>
+</form>
+<div ui-view></div>
