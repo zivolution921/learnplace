@@ -1,33 +1,17 @@
 angular 
   .module("learnplace")
   .controller("CoursesController", CoursesController);
-  function CoursesController(Course, Auth, $scope, $http, $state) {
-    var ctrl = this;
-
-    $scope.course = {
-      name: ''
-    };
-    $scope.errors = [];
-
-    Auth.currentUser()
-    .then(function(user) {
-      ctrl.user = user;
-    });
-  }
-   $scope.create = function() {
-      $http.post('/api/v1/courses', {
-        course: $scope.course
-      }).then(function(result){
-        $state.go('courses_index');
-      }, function(response){
-        $scope.errors = response.data.errors;
-      });
-    }
-  })
-  .controller("IndexController", function($scope, $http) {
-    var DATA = [];
     
+  function CoursesController($scope, $http, $stateParams) {
+    var DATA = [];
+    var endpoint = '/api/v1/schools/' + $stateParams.id;
+    
+    $scope.course = {
+      name: '',
+      description: ''
+    };
     $scope.query = '';
+    $scope.school_name = '';
 
     $scope.doSearch = function(){
       $scope.courses = DATA.filter(function(item){
@@ -35,10 +19,31 @@ angular
       });
     };
 
-    $http.get('/api/v1/courses').then(function successCallback(response) {
+    $scope.create = function(){
+
+      var success = function(response){
+        DATA.push(response.data);
+        $scope.course = {
+          name: '',
+          description: ''
+        };
+      };
+
+      var unsuccess = function(response){
+        $scope.errors = response.data.errors;
+      };
+
+      $http.post(endpoint + '/courses', $scope.course).then(success, unsuccess);
+    };
+
+    $http.get(endpoint).then(function(response){
+      $scope.school_name = response.data.name;
+    });
+
+    $http.get(endpoint + '/courses').then(function(response) {
         DATA = response.data;
         $scope.courses = DATA;
-      }, function errorCallback(response) {
+      }, function(response) {
         console.log(response);
       });
-  });
+  }
