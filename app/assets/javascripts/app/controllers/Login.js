@@ -1,9 +1,9 @@
 angular
   .module("learnplace")
-  .controller("LoginController", function($scope, $http, $state, Auth){  
+  .controller("LoginController", function($scope, $state, Auth){  
     $scope.login = function() {
-      Auth.login($scope.user, { interceptAuth: false }).then(function (response) {
-        $state.go('schools_index')   
+      Auth.login($scope.user).then(function (response) {
+        $state.go('home.schools_index')   
       }, function (response) {
         $scope.error = response.data.error;
       });
