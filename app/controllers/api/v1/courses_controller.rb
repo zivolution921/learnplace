@@ -1,9 +1,7 @@
 class Api::V1::CoursesController < ApplicationController
 
-  #before_filter :authenticate_user!, :except => [:index]
   before_action :set_school
-  before_action :check_if_admin, :only => [:create, :update, :edit, :destroy]
-
+  
   def index
     @courses = @school.courses.all
     render json: @courses
@@ -47,12 +45,6 @@ class Api::V1::CoursesController < ApplicationController
 
   def set_school
     @school = School.find(params[:school_id])
-  end
-
-  def check_if_admin
-    if current_user
-      head(403) unless current_user.admin?
-    end
   end
 
 end
