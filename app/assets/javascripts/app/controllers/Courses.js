@@ -2,10 +2,10 @@ angular
   .module("learnplace")
   .controller("CoursesController", CoursesController);
     
-  function CoursesController($scope, $http, $stateParams) {
+  function CoursesController($scope, $http, $stateParams, SchoolService) {
     var DATA = [];
-    var endpoint = '/api/v1/schools/' + $stateParams.id;
-    
+    var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses';
+   
     $scope.course = {
       name: '',
       description: ''
@@ -33,17 +33,17 @@ angular
         $scope.errors = response.data.errors;
       };
 
-      $http.post(endpoint + '/courses', $scope.course).then(success, unsuccess);
+      $http.post(endpoint, $scope.course).then(success, unsuccess);
     };
 
-    $http.get(endpoint).then(function(response){
-      $scope.school_name = response.data.name;
+    SchoolService.get($stateParams.school_id).then(function(response){
+     $scope.school_name = response.data.name;
     });
 
-    $http.get(endpoint + '/courses').then(function(response) {
+    $http.get(endpoint).then(function(response) {
         DATA = response.data;
         $scope.courses = DATA;
       }, function(response) {
         console.log(response);
-      });
+    });
   }
