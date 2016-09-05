@@ -5,10 +5,10 @@ angular
       name: ''
     };
     $scope.errors = [];
- 
+    
     $scope.create = function() {
       SchoolService.create($scope.school).then(function(result){
-        $state.go('schools_index');
+        $state.go('home.schools_index');
       }, function(response){
         $scope.errors = response.data.errors;
       });
@@ -16,10 +16,6 @@ angular
   }])
   .controller("IndexController", function(SchoolService, Auth, $scope, $filter) {
     var DATA = [];
-  
-    Auth.currentUser().then(function(response){
-      $scope.current_user = response.email;
-    });
 
     $scope.handle = '';
 
