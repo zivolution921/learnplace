@@ -1,0 +1,15 @@
+List of Chapters for {{ course_name }} in the {{ school_name }}
+
+<ul>
+  <li ng-repeat="chapter in chapters">{{ chapter.name }}</li>  
+</ul>
+
+<form ng-submit="create()">
+  <ol>
+    <li ng-repeat="error in errors">{{ error }}</li>
+  </ol>
+  <input ng-model="chapter.name" placeholder="name"/><br/>
+  <textarea ng-model="chapter.description" placeholder="description"></textarea><br/>
+  <button type="submit">Create</button>
+</form>
+<div ui-view></div>

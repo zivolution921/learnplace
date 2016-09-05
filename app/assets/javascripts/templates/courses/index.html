@@ -1,6 +1,7 @@
-<a ng-href="#/">Back to schools</a> | Welcome to {{ school_name }} courses:
+<a ui-sref="home.schools_index">Back to schools</a> | Welcome to {{ school_name }} courses:
 <ul>
-  <li ng-repeat="course in courses">{{ course.name }}</li>  
+  <li ng-repeat="course in courses">
+    <a ui-sref="home.schools_courses_chapters({course_id: course.id, school_id: course.school_id })">{{ course.name }}</a></li>  
 </ul>
 
 <form ng-submit="create()">

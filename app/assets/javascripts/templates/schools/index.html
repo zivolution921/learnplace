@@ -1,8 +1,8 @@
-<h1>School list | {{ current_user }}</h1>
+<h1>School list</h1>
 <div class="pull-right">
   <input ng-keyup="doSearch()" ng-model="query" placeholder="Search..."/>
 </div>
-<a ui-sref="school_new">New school</a>
+<a ui-sref="home.school_new">New school</a>
 <table class="table">
   <thead>
     <tr>
@@ -15,7 +15,7 @@
     <tr ng-repeat="school in schools | filter:nameText | orderBy: 'name'">
       <td>{{ school.id }}</td>
       <td>
-        <a ng-hide="school.edit" ng-href="#/schools/{{ school.id }}/courses">{{school.name | uppercase}}
+        <a ng-hide="school.edit" ui-sref="home.schools_courses({ school_id: school.id })">{{school.name | uppercase}}
         </a>
         <input ng-model="school.name" ng-show="school.edit"/>
         |
