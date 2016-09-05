@@ -1,0 +1,15 @@
+<div class="navbar-fixed">
+  <nav ng-controller="NavbarController">
+    <div class="nav-wrapper">
+      <a ui-sref="home" class="brand-logo">Learnplace</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a ui-sref="home.schools_index">Schools</a></li>
+        <li><a ui-sref="home.login">Login</a></li>
+        <li><a ui-sref="home.signup">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<span ng-show="signedIn()">Logged in</span>
+<span ng-show="!signedIn()">Not Logged in</span>
