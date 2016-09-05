@@ -2,6 +2,9 @@ function SchoolService($http) {
   var services = {};
   var endpoint = '/api/v1/schools';
 
+  services.get = function(school_id) {
+     return $http.get(endpoint + '/' + school_id);
+  }
   services.list = function() {
     return $http.get(endpoint);
   }
