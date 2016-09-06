@@ -6,12 +6,19 @@ function ChapterService($http, $stateParams) {
   services.get = function(course_id, school_id, chapter_id) {
      return $http.get(endpoint + '/chapters');
   }
+  // list
+  services.list = function() {
+    return $http.get(endpoint + '/chapters');
+  }
 
-  // services.update = function(chapter){
-  //   $http.put(endpoint + '/' + school_id + '/courses/' + course_id + chapters + chapter.id, {
-  //     name: chapter.name
-  //   });
-  // }
+  // post
+  services.create = function(chapter) {
+    var promise = $http.post(endpoint + '/chapters', {
+        chapter: chapter
+    });
+    return promise;
+  }
+
 
   return services;
 }
