@@ -3,7 +3,7 @@ angular
   .controller("ChaptersController", ChaptersController)
   
 
-  function ChaptersController($scope, $http, $stateParams, SchoolService, CourseService) {
+  function ChaptersController($scope, $http, $stateParams, SchoolService, CourseService, ChapterService) {
     
     var DATA = [];
     var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses/' + $stateParams.course_id;
@@ -24,6 +24,11 @@ angular
       });
     };
 
+    $scope.update = function(chapter){
+      school.edit = false;
+      CourseService.update(chapter);
+    };
+
 
     $scope.create = function(){
 
@@ -33,13 +38,17 @@ angular
           name: '',
           description: ''
         };
+        $scope.newChapter = response.data;
       };
 
       var unsuccess = function(response){
         $scope.errors = response.data.errors;
       };
 
-      $http.post(endpoint + '/chapters', $scope.chapter).then(success, unsuccess);
+      
+
+      $http.post(endpoint + '/chapters',
+        {name: $scope.chapter.name, description: $scope.chapter.description}).then(success, unsuccess);
     };
 
     // Using Services
@@ -52,11 +61,15 @@ angular
      $scope.course_name = response.data.name;
     });
 
-    $http.get(endpoint + '/chapters').then(function(response) {
-        DATA = response.data;
-        $scope.chapters = DATA;
-      }, function(response) {
-        console.log(response);
+    ChapterService.get($stateParams.chapter_id, $stateParams.course_id, $stateParams.school_id).then(function(response) {
+      $scope.chapter_name = response.data.name;
     });
+
+    // $http.get(endpoint + '/chapters').then(function(response) {
+    //     DATA = response.data;
+    //     $scope.chapters = DATA;
+    //   }, function(response) {
+    //     console.log(response);
+    // });
   }
 
