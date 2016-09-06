@@ -1,7 +1,6 @@
 angular 
   .module("learnplace")
   .controller("CoursesController", CoursesController);
-    
   function CoursesController($scope, $http, $stateParams, SchoolService) {
     var DATA = [];
     var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses';
@@ -17,6 +16,11 @@ angular
       $scope.courses = DATA.filter(function(item){
         return item.name.indexOf($scope.query) != -1;
       });
+    };
+
+    $scope.update = function(course){
+      course.edit = false;
+      CourseService.update(course);
     };
 
     $scope.create = function(){
