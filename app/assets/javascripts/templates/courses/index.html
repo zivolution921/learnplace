@@ -1,7 +1,12 @@
 <a ui-sref="home.schools_index">Back to schools</a> | Welcome to {{ school_name }} courses:
 <ul>
   <li ng-repeat="course in courses">
-    <a ui-sref="home.schools_courses_chapters({course_id: course.id, school_id: course.school_id })">{{ course.name }}</a></li>  
+    <a ng-hide="course.edit" ui-sref="home.schools_courses_chapters({course_id: course.id, school_id: course.school_id })">{{ course.name }}</a>
+     <input ng-model="course.name" ng-show="course.edit"/>
+    |
+    <a ng-click="course.edit = true" ng-hide="course.edit">edit</a>
+    <a ng-click="update(course)" ng-show="course.edit">update</a>
+    </li>  
 </ul>
 
 <form ng-submit="create()">
