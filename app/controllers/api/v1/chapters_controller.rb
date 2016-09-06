@@ -1,11 +1,17 @@
 class Api::V1::ChaptersController < ApplicationController
   
   before_action :set_course  
+  before_action :set_school
 
   def index  
     @chapters = @course.chapters.all  
     render json: @chapters  
   end  
+
+  def show
+    @chapter = @school.courses.chapters.find(params[:id])
+    render json: @chapter
+  end
 
   def create  
     @chapter = @course.chapters.build(chapter_params)  
@@ -36,6 +42,11 @@ class Api::V1::ChaptersController < ApplicationController
 
   def set_course  
     @course = Course.find(params[:course_id])  
-  end  
+  end 
+
+
+  def set_school
+    @school = School.find(params[:school_id])
+  end 
 
 end
