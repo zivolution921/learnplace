@@ -1,10 +1,11 @@
 angular
   .module("learnplace")
-  .controller("RegistrationController", function($scope, $http, $state, Auth){  
+  .controller("RegistrationController", function($scope, $http, $state, Auth, $location){  
     
     $scope.register = function() {
       Auth.register($scope.user).then(function (response) {
-            $state.go('schools_index')
+            $location.path("schools_index"); 
+            // $state.go('schools_index')
             
         }, function (response) {
             
