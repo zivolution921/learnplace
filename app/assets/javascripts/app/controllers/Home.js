@@ -1,4 +1,7 @@
-angular.module("learnplace")
-.controller("HomeController", function(Auth, $scope) {
+(function () {
+  'use strict';
+  angular.module("learnplace")
+  .controller("HomeController", function() {
     
-});
+  });
+})();

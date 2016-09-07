@@ -2,9 +2,7 @@
   'use strict';
   angular 
     .module("learnplace")
-    .controller("CoursesController", CoursesController);
-
-    function CoursesController($scope, $http, $stateParams, SchoolService) {
+    .controller("CoursesController", ['$scope', '$http', '$stateParams', 'SchoolService', 'CourseService', function($scope, $http, $stateParams, SchoolService, CourseService) {
       var DATA = [];
       var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses';
      
@@ -53,5 +51,5 @@
         }, function(response) {
           console.log(response);
       });
-    }
+    }]);
 })();
