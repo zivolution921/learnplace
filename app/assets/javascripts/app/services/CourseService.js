@@ -6,6 +6,12 @@ function CourseService($http) {
      return $http.get(endpoint + '/' + school_id + '/courses/' + course_id);
   }
 
+  services.update = function(course){
+    $http.put(endpoint + '/' + course.school_id + '/courses/' + course.id, {
+      name: course.name
+    });
+  }
+
   return services;
 }
 
