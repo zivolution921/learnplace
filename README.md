@@ -2,7 +2,7 @@
 
 ##Introduction
 
-Learnplace is a eLearning platform, that's going to allow school admins to create and manage schools and courses. 
+Learnplace is a eLearning platform, that's going to allow school admins to create and manage schools, courses, and chapters. 
 
 ##Installation
 
