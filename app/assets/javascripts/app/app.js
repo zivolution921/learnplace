@@ -1,7 +1,8 @@
 angular
   .module("learnplace", ['ui.router','templates', 'Devise'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, AuthProvider) {
     console.log("hello world app.js")
+
     $stateProvider
         .state('home', {
            url: '/',
