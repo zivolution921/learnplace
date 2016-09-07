@@ -18,8 +18,9 @@
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="home.login">Login</a></li>
-        <li><a ui-sref="home.signup">Sign Up</a></li>
+        <li ng-hide="isSignedIn()"><a ui-sref="home.login">Login</a></li>
+        <li ng-hide="isSignedIn()"><a ui-sref="home.signup">Sign Up</a></li>
+        <li ng-show="isSignedIn()"><a href="#" ng-click="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
