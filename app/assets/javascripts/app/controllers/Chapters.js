@@ -1,6 +1,8 @@
-angular 
-  .module("learnplace")
-  .controller("ChaptersController", ChaptersController)
+(function () {
+  'use strict';
+  angular 
+    .module("learnplace")
+    .controller("ChaptersController", ChaptersController)
   
 
   function ChaptersController($scope, $http, $state, $stateParams, SchoolService, CourseService, ChapterService) {
@@ -49,9 +51,9 @@ angular
      $scope.course_name = response.data.name;
     });
 
-    ChapterService.get($stateParams.chapter_id, $stateParams.course_id, $stateParams.school_id).then(function(response) {
-      $scope.chapter_name = response.data.name;
-    });
+    // ChapterService.get($stateParams.chapter_id, $stateParams.course_id, $stateParams.school_id).then(function(response) {
+    //   $scope.chapter_name = response.data.name;
+    // });
 
 
     ChapterService.list().then(function(response) {
@@ -61,4 +63,5 @@ angular
         console.log(response);
       });
   }
+})();
 
