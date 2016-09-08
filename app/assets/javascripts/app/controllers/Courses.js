@@ -2,8 +2,10 @@
   'use strict';
   angular 
     .module("learnplace")
-    .controller("CoursesController", ['$scope', '$http', '$stateParams', 'SchoolService', 'CourseService', function($scope, $http, $stateParams, SchoolService, CourseService) {
-      var DATA = [];
+    .controller("CoursesController", ['$scope', '$http', '$stateParams', 'SchoolService', 'CourseService', 'school', 'courses', function($scope, $http, $stateParams, SchoolService, CourseService, school, courses) {
+      
+      var DATA = courses.data;
+      $scope.courses = DATA;
       var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses';
      
       $scope.course = {
@@ -25,7 +27,6 @@
       };
 
       $scope.create = function(){
-
         var success = function(response){
           DATA.push(response.data);
           $scope.course = {
@@ -33,23 +34,14 @@
             description: ''
           };
         };
-
         var unsuccess = function(response){
           $scope.errors = response.data.errors;
         };
-
         $http.post(endpoint, $scope.course).then(success, unsuccess);
       };
 
-      SchoolService.get($stateParams.school_id).then(function(response){
-       $scope.school_name = response.data.name;
-      });
+      $scope.school_name = school.data.name;
 
-      $http.get(endpoint).then(function(response) {
-          DATA = response.data;
-          $scope.courses = DATA;
-        }, function(response) {
-          console.log(response);
-      });
+  
     }]);
 })();
