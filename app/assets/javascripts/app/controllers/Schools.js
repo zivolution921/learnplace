@@ -16,8 +16,9 @@
         });
       }
     }])
-    .controller("IndexController", function(SchoolService, Auth, $scope, $filter) {
-      var DATA = [];
+    .controller("IndexController", function(schools, SchoolService, Auth, $scope, $filter) {
+      var DATA = schools.data;
+      $scope.schools = DATA;
 
       $scope.handle = '';
 
@@ -38,11 +39,6 @@
         });
       };
 
-      SchoolService.list().then(function(response) {
-          DATA = response.data;
-          $scope.schools = DATA;
-        }, function(response) {
-          console.log(response);
-        });
+      
     });
 })();
