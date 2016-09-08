@@ -11,6 +11,9 @@ function CourseService($http) {
       name: course.name
     });
   }
+  services.list = function(school_id) {
+    return $http.get(endpoint + '/' + school_id + '/courses');
+  }
 
   return services;
 }
