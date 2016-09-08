@@ -1,20 +1,19 @@
-function ChapterService($http, $stateParams) {
+function ChapterService($http) {
   var services = {};
-  var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses/' + $stateParams.course_id;
-  // var endpoint = '/api/v1/schools';
+  var endpoint = '/api/v1/schools';
 
   services.get = function(course_id, school_id, chapter_id) {
-     return $http.get(endpoint + '/chapters');
+    return $http.get(endpoint + '/' + school_id + '/courses/' + course_id + '/chapters/' + chapter_id); 
   }
   // list
-  services.list = function() {
-    return $http.get(endpoint + '/chapters');
+  services.list = function(course_id, school_id) {
+    return $http.get(endpoint + '/' + school_id + '/courses/' + course_id + '/chapters');
   }
 
   // post
-  services.create = function(chapter) {
-    var promise = $http.post(endpoint + '/chapters', {
-        chapter: chapter
+  services.create = function(school_id, course_id, chapter) {
+    var promise = $http.post(endpoint + '/' + school_id + '/courses/' + course_id + '/chapters', {
+      chapter: chapter
     });
     return promise;
   }
