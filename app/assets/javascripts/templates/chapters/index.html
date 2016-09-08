@@ -1,6 +1,8 @@
+<a ui-sref="home.schools_courses({ school_id: school_id })">Back to Courses</a>
 List of Chapters for {{ course_name }} in the {{ school_name }}
-
-
+<ul>
+  <li ng-repeat="chapter in chapters">{{ chapter.name }}</li>  
+</ul>
 <form ng-submit="create()">
   <ol>
     <li ng-repeat="error in errors">{{ error }}</li>
@@ -10,7 +12,5 @@ List of Chapters for {{ course_name }} in the {{ school_name }}
   <button type="submit">Create</button>
 </form>
 
-<ul>
-  <li ng-repeat="chapter in chapters">{{ chapter.name }}</li>  
-</ul>
+
 <div ui-view></div>
