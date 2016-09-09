@@ -24,18 +24,34 @@ angular
           templateUrl: 'courses/index.html',
           controller: 'CoursesController',
           resolve: {
-            school: function($stateParams, SchoolService){
+            schools: function($stateParams, SchoolService){
+              console.log("$stateParams", $stateParams);
               return SchoolService.get($stateParams.school_id);
             },
             courses: function($stateParams, CourseService) {
+              console.log("$stateParams", $stateParams);
               return CourseService.list($stateParams.school_id);
             }
+            // chapters: function(ChapterService) {
+            //   return ChapterService.list();
+            // }
           }
         })
         .state('home.schools_courses_chapters', {
           url: 'schools/:school_id/courses/:course_id/chapters',
           templateUrl: 'chapters/index.html',
-          controller: 'ChaptersController'
+          controller: 'ChaptersController',
+          resolve: {
+            schools: function($stateParams, SchoolService){
+              return SchoolService.get($stateParams.school_id);
+            },
+            courses: function($stateParams, CourseService) {
+              return CourseService.get($stateParams.course_id, $stateParams.school_id);
+            },
+            chapters: function($stateParams, ChapterService) {
+              return ChapterService.list($stateParams.course_id, $stateParams.school_id);
+            }
+          }
         })
         .state('home.login', {
           url: 'login',

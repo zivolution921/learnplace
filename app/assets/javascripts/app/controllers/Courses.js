@@ -2,7 +2,7 @@
   'use strict';
   angular 
     .module("learnplace")
-    .controller("CoursesController", ['$scope', '$http', '$stateParams', 'SchoolService', 'CourseService', 'school', 'courses', function($scope, $http, $stateParams, SchoolService, CourseService, school, courses) {
+    .controller("CoursesController", ['$scope', '$http', '$stateParams', 'SchoolService', 'CourseService', 'schools', 'courses', function($scope, $http, $stateParams, SchoolService, CourseService, schools, courses) {
       
       var DATA = courses.data;
       $scope.courses = DATA;
@@ -40,7 +40,7 @@
         $http.post(endpoint, $scope.course).then(success, unsuccess);
       };
 
-      $scope.school_name = school.data.name;
+      $scope.school_name = schools.data.name;
 
   
     }]);
